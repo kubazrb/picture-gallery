@@ -1,0 +1,11 @@
+spring:
+  profiles:
+    active: dev
+
+logging:
+  level:
+    ROOT: INFO
+    org.springframework: ERROR
+    org.springframework.data: ERROR
+    pl.wat.prz: DEBUG
+  file: /home/kuba/log/application.log

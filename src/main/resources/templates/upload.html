@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" lang="pl">
+<head>
+    <title>Obrazki smieszne, fajne i w ogóle</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css"
+          integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css"
+          href="../static/css/common.css" th:href="@{../static/css/common.css}"/>
+    <link th:href="@{/webjars/bootstrap/4.0.0-alpha.6-1/css/bootstrap.min.css}" rel="stylesheet"/>
+    <link th:href="@{/webjars/font-awesome/4.7.0/css/font-awesome.min.css}" rel="stylesheet"/>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,400italic">
+    <link rel='stylesheet prefetch'
+          href='https://cdn.gitcdn.link/cdn/angular/bower-material/v1.1.5/angular-material.css'>
+
+    <link th:href="@{/css/common.css}" rel="stylesheet"/>
+    <link th:href="@{/css/sticky-footer.css}" rel="stylesheet"/>
+</head>
+<body>
+<header>
+    <div th:replace="fragments/header::header"></div>
+</header>
+<div class="separator"></div>
+<section class="container custom-container">
+    <form method="POST" th:action="@{/upload}" action="/upload" th:object="${picture}"
+          enctype="multipart/form-data">
+        <div class="form-group">
+            <input type="file" name="file"/>
+        </div>
+        <div class="form-group">
+            <input type="text" th:placeholder="#{title}" th:field="*{name}"/>
+        </div>
+        <div class="form-group">
+            <textarea class="form-control" rows="3" type="text" th:placeholder="#{description}"
+                      th:field="*{description}"></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary" th:text="#{add}" >Dodaj</button>
+    </form>
+    <p class="inputError" th:text="${error} != null ? #{${error}}"></p>
+    <p class="inputSuccess" th:text="${success} != null ? #{${success}}"></p>
+
+    <table class="picture-table">
+        <tr>
+            <td class="picture-container">
+                <img align="center"
+                     th:src="${uploadedImage} != null ?
+                     @{'data:image/png;base64,' + ${uploadedImage.to64encode()}} :
+                     @{https://i.imgflip.com/1rliyn.jpg}"
+                     alt="uploaded-image"/>
+            </td>
+        </tr>
+    </table>
+</section>
+
+<footer>
+    <div th:insert="~{fragments/footer :: #copy-section}"></div>
+</footer>
+
+</body>
+</html>

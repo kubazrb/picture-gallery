@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="pl">
+<head>
+    <title th:text="@{picture.name}">Obrazki smieszne, fajne i w ogóle</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css"
+          integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css"
+          href="../static/css/common.css" th:href="@{../static/css/common.css}"/>
+    <link th:href="@{/webjars/bootstrap/4.0.0-alpha.6-1/css/bootstrap.min.css}" rel="stylesheet"/>
+    <link th:href="@{/webjars/font-awesome/4.7.0/css/font-awesome.min.css}" rel="stylesheet"/>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,400italic">
+    <link rel='stylesheet prefetch'
+          href='https://cdn.gitcdn.link/cdn/angular/bower-material/v1.1.5/angular-material.css'>
+
+    <link th:href="@{/css/common.css}" rel="stylesheet"/>
+    <link th:href="@{/css/sticky-footer.css}" rel="stylesheet"/>
+</head>
+<body>
+<header>
+    <div th:replace="fragments/header::header"></div>
+</header>
+<div class="separator"></div>
+<section class="container custom-container">
+
+    <table class="picture-table">
+        <td class="picture-container">
+            <div class="picture-info">
+                <div class="picture-title" th:text="${picture.name}"></div>
+                <div class="picture-date" th:text="${#dates.format(picture.pdate, 'dd MMM yyyy HH:mm')}"></div>
+                <div class="picture-points" th:text="${picture.points}"></div>
+            </div>
+
+            <!--<div class="picture-author" th:text="${picture.user.nick}"></div>-->
+            <img align="center"
+                 th:src="@{'data:image/png;base64,' + ${picture.to64encode()}}"
+                 th:alt="${picture.name}"/>
+
+            <div class="picture-description" th:text="${picture.description}"></div>
+            <div class="separator"></div>
+            <div class="picture-points-buttons">
+                <form action="#" th:action="@{'/picture/' + ${currentPicId}}" method="post">
+                    <button class="btn btn-info" type="submit" name="action" th:text="#{good}" value="plus">Dobre</button>
+                    <button class="btn btn-info" type="submit" name="action" th:text="#{bad}" value="minus">Nędza
+                    </button>
+                </form>
+            </div>
+        </td>
+    </table>
+    <table class="buttons-container">
+        <tr>
+            <th class="back-button">
+                <a th:href="${prev}" th:text="#{previous-m}" th:class="${prev} == null ?
+                @{btn btn-primary disabled} :
+                @{btn btn-primary}">
+                    Poprzednie</a>
+            </th>
+            <th class="next-button">
+                <a th:href="${next}" th:text="#{next-m}" th:class="${next} == null ?
+                @{btn btn-primary disabled} :
+                @{btn btn-primary}">
+                    Następne</a>
+            </th>
+        </tr>
+    </table>
+</section>
+</body>
+</html>

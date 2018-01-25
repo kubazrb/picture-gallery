@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="pl">
+<head>
+
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet"/>
+    <link th:href="@{/css/angular/angular.css}" rel="stylesheet prefetch"/>
+
+    <script th:src="@{/webjars/jquery/3.2.1/jquery.min.js}"></script>
+    <script th:src="@{/webjars/tether/1.4.0/dist/js/tether.min.js}"></script>
+    <script th:src="@{/webjars/bootstrap/4.0.0-alpha.6-1/js/bootstrap.min.js}"></script>
+    <title>Obrazki smieszne, fajne i w ogóle</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css"
+          integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css"
+          href="../static/css/common.css" th:href="@{../static/css/common.css}"/>
+    <link th:href="@{/webjars/bootstrap/4.0.0-alpha.6-1/css/bootstrap.min.css}" rel="stylesheet"/>
+    <link th:href="@{/webjars/font-awesome/4.7.0/css/font-awesome.min.css}" rel="stylesheet"/>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,400italic">
+    <link rel='stylesheet prefetch'
+          href='https://cdn.gitcdn.link/cdn/angular/bower-material/v1.1.5/angular-material.css'>
+
+    <link th:href="@{/css/common.css}" rel="stylesheet"/>
+    <link th:href="@{/css/sticky-footer.css}" rel="stylesheet"/>
+</head>
+<body>
+<header>
+    <div th:replace="fragments/header::header"></div>
+</header>
+<div class="separator"><p align="right"></p></div>
+<section class="container custom-container">
+    <!--<h1 th:text="#{${title} != null ? ${title}}"></h1>-->
+    <h1 th:text="#{${title}}"></h1>
+    <h1 th:text="${keyword}"></h1>
+    <table class="picture-table">
+        <tr th:each="picture: ${pictures}">
+            <td class="picture-container">
+                <div class="picture-info">
+                    <div class="picture-title" th:text="${picture.name}"></div>
+                    <div class="picture-date" th:text="${#dates.format(picture.pdate, 'dd MMM yyyy HH:mm')}"></div>
+                    <div class="picture-points" th:text="${picture.points}"></div>
+                </div>
+
+                <!--<div class="picture-author" th:text="${picture.user.nick}"></div>-->
+                <a th:href="@{'/picture/' + ${picture.id}}"><img align="center"
+                                                                 th:src="@{'data:image/png;base64,' + ${picture.to64encode()}}"
+                                                                 alt="wubba-lubba-dub-dub"/></a>
+
+                <div class="picture-description" th:text="${picture.description}"></div>
+            </td>
+        </tr>
+    </table>
+    <table class="buttons-container">
+        <tr>
+            <th class="back-button">
+                <a th:href="@{${path} + ${pageNumber-1}}" th:text="#{previous-f}"
+                   th:class="${pageNumber} <= 0 ?
+                @{btn btn-primary disabled} :
+                @{btn btn-primary}">
+                    Poprzednie</a>
+            </th>
+            <th class="next-button">
+                <a th:href="@{${path} + ${pageNumber+1}}" th:text="#{next-f}"
+                   th:class="${pageNumber} >= ${lastPage} ?
+                @{btn btn-primary disabled} :
+                @{btn btn-primary}">
+                    Następne</a>
+            </th>
+        </tr>
+    </table>
+</section>
+
+<footer>
+    <div th:insert="~{fragments/footer :: #copy-section}"></div>
+</footer>
+
+</body>
+</html>

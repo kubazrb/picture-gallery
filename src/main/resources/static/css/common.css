@@ -1,0 +1,138 @@
+.custom-header {
+    background-color: #292729;
+    box-shadow: 0 2px 4px -1px rgba(0, 0, 0, .2), 0 4px 5px 0 rgba(0, 0, 0, .14), 0 1px 10px 0 rgba(0, 0, 0, .12);
+}
+
+html, body {
+    background-color: #1e1c1e;
+    height: auto;
+    font-family: 'Roboto', sans-serif !important;
+}
+
+body {
+    position: static;
+}
+
+.custom-container {
+    margin-top: 56px;
+    margin-bottom: 5px;
+    background-color: #292729;
+    min-height: 24cm;
+}
+
+h1 {
+    color: #b19b6f;
+    text-align: center;
+}
+
+h2 {
+    color: #fffac5;
+}
+
+.light {
+    color: #fffac5;
+}
+
+.inputError {
+    color: red;
+    font-size: 20px;
+}
+
+.inputSuccess {
+    color: green;
+    font-size: 20px;
+}
+
+.picture-table {
+    border-collapse: separate;
+    border-spacing: 20px;
+    border-color: aqua;
+    width: 100%;
+}
+
+.buttons-container {
+    width: 100%;
+}
+.next-button {
+    text-align: right;
+}
+.back-button {
+    text-align: left;
+}
+
+.language-click {
+    color: #6c716c;
+}
+
+.language-button {
+    -webkit-border-radius: 100px;
+    -moz-border-radius: 100px;
+    border-color: black;
+    color: #ffffff;
+    font-size: 10px;
+    background: #000000;
+    padding: 6px 12px 6px 11px;
+}
+
+.picture-container {
+    text-align: center;
+    max-width: 600px;
+    max-height: 900px;
+    background-color: #2d2b2d;
+}
+
+.picture-title {
+    text-align: left;
+    margin-left: 7px;
+    font-size: x-large;
+    font-weight: bold;
+    color: papayawhip;
+}
+
+.picture-description {
+    text-align: left;
+    margin-left: 10px;
+    font-size: small;
+    font-weight: bold;
+    color: papayawhip;
+}
+
+.picture-author {
+    text-align: left;
+    /*margin-left: 7px;*/
+    font-size: xx-small;
+    font-weight: 200;
+    color: black;
+}
+
+.picture-date {
+    text-align: left;
+    /*margin-left: 7px;*/
+    font-size: x-small;
+    font-weight: 200;
+    color: floralwhite;
+}
+
+.picture-points {
+    text-align: center;
+    font-size: large;
+    /*margin-left: 7px;*/
+    font-weight: 200;
+    color: navajowhite;
+    background-color: #37432e;
+    width: 1cm;
+}
+
+.picture-info {
+    background-color: #23261c;
+}
+
+.picture-points-buttons {
+    height: 30px;
+    width: 100%;
+}
+
+.separator {
+    height: 30px;
+    width: 100%;
+}
