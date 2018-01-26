@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 @RequestMapping("/error")
 public class ErrorController {
+
     @GetMapping("")
     public String noResult(Model model) {
         return "error/noresult";

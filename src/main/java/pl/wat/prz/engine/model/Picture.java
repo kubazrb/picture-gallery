@@ -52,12 +52,4 @@ public class Picture implements Serializable {
     public String to64encode() {
         return Base64.encodeBase64String(this.image);
     }
-
-    public void pointUp () {
-        this.points+=1;
-    }
-
-    public void pointDown () {
-        this.points-=1;
-    }
 }

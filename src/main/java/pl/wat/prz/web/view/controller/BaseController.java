@@ -1,6 +1,6 @@
 package pl.wat.prz.web.view.controller;
 
-//import org.slf4j.*;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,10 +11,10 @@ import pl.wat.prz.engine.service.PictureService;
 import java.util.List;
 
 
-
 public class BaseController {
 
-    private static final Logger logger = LoggerFactory.getLogger(BaseController.class);
+    protected static final Logger logger = LoggerFactory.getLogger(BaseController.class);
+
     @Autowired
     protected PictureService ps;
     public static final int amountOfPicturesOnPage = 10;

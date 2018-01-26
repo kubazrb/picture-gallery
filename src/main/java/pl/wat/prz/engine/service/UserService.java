@@ -9,7 +9,7 @@ import pl.wat.prz.engine.repository.UserRepository;
 import java.util.List;
 
 @Service
-public class UserService {
+public class UserService extends BaseService {
 
     @Autowired
     UserRepository ur;

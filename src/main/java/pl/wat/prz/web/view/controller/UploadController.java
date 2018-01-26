@@ -1,6 +1,8 @@
 package pl.wat.prz.web.view.controller;
 
 import com.google.common.io.Files;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -28,10 +30,7 @@ import java.util.Date;
 @RequestMapping("/upload")
 public class UploadController extends BaseController {
 
-    @Autowired
-    UserService us;
     private static final SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd HH:mm");
-
 
     @PostMapping("")
     public String add(@RequestParam("file") MultipartFile file,

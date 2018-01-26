@@ -1,25 +1,17 @@
 package pl.wat.prz.engine.repository;
 
-import com.querydsl.jpa.impl.JPAQuery;
-import com.querydsl.jpa.impl.JPAQueryFactory;
-import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 import pl.wat.prz.engine.model.Picture;
 import pl.wat.prz.engine.model.QPicture;
 
-import javax.annotation.PostConstruct;
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
-import java.util.*;
+import java.util.Calendar;
+import java.util.List;
 
 @Repository
 public class PictureRepository extends BaseRepository {
 
 
     private QPicture picture = QPicture.picture;
-
 
     public Picture findOne(Long id) {
         return queryFactory.selectFrom(picture)
