@@ -1,21 +1,17 @@
 package pl.wat.prz.web.view.controller;
 
 import com.google.common.io.Files;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import pl.wat.prz.engine.exceptions.FormDataException;
 import pl.wat.prz.engine.exceptions.IncorrectResolutionOfImageException;
 import pl.wat.prz.engine.exceptions.IncorrectSizeOfImageException;
 import pl.wat.prz.engine.exceptions.IncorrectTypeOfImageException;
 import pl.wat.prz.engine.model.Picture;
-import pl.wat.prz.engine.service.UserService;
+import pl.wat.prz.web.view.controller.base.BaseController;
 
 import javax.imageio.ImageIO;
 import javax.validation.Valid;
@@ -23,7 +19,6 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
-import java.util.Arrays;
 import java.util.Date;
 
 @Controller

@@ -1,4 +1,4 @@
-package pl.wat.prz.web.view.controller;
+package pl.wat.prz.web.view.controller.base;
 
 
 import org.slf4j.Logger;
@@ -8,7 +8,10 @@ import org.springframework.ui.Model;
 import pl.wat.prz.engine.model.Picture;
 import pl.wat.prz.engine.service.PictureService;
 
+import javax.annotation.PostConstruct;
+import java.io.FileInputStream;
 import java.util.List;
+import java.util.Properties;
 
 
 public class BaseController {
@@ -22,8 +25,7 @@ public class BaseController {
     public String addAttributes(Model model, Long amountOfPictures, List<Picture> pictures, String path) {
         try {
             int p;
-            if (amountOfPictures % 10 == 0) p = 1;
-            else p = 0;
+            p = amountOfPictures % 10 == 0 ? 1 : 0;
             model.addAttribute("lastPage", (amountOfPictures / amountOfPicturesOnPage) - p);
             model.addAttribute("pictures", pictures);
             model.addAttribute("path", path);
